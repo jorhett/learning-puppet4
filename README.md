@@ -1,4 +1,4 @@
 intro-to-puppet
 ===============
 
-Introduction to Puppet artifacts
+This repository contains components used in the Introduction to Puppet video.
