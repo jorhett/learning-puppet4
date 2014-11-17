@@ -1,12 +1,12 @@
 package { 'puppet':
-  ensure  => latest,
-  before  => Service['puppet'],
-  tag     => 'puppet',
+  ensure => latest,
+  notify => Service['puppet'],
+  tag    => 'puppet',
 }
 
 service { 'puppet':
-  ensure  => running,
-  enable  => true,
-  require => Package['puppet'],
-  tag     => 'puppet',
+  ensure    => running,
+  enable    => true,
+  subscribe => Package['puppet'],
+  tag       => 'puppet',
 }
