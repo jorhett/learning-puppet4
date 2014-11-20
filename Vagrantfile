@@ -14,11 +14,13 @@ $setupscript = <<END
   # Install puppet.conf and example hiera settings in global directory
   mkdir /etc/puppet
   cp -r /vagrant/etc-puppet/* /etc/puppet/
+  chown -R vagrant:vagrant /etc/puppet/hiera*
   # Provide the URL to the Puppet Labs yum repo on login
   echo "
 
-You should start by installing the Puppet Labs Yum repo:
+You should start by installing the Puppet Labs Yum repo and Puppet
    sudo yum install -y http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
+   sudo yum install -y puppet
    
 " > /etc/motd
 END
@@ -28,8 +30,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Default client
   config.vm.define "client", primary: true do |client|
-    client.vm.hostname = "client"
+    client.vm.hostname = "client.example.com"
     client.vm.network :private_network, ip: "192.168.250.10"
     client.vm.provision "shell", inline: $setupscript
+  end
+
+  # A puppetmaster
+  config.vm.define "puppetmaster", autostart: false do |puppetmaster|
+    puppetmaster.vm.hostname = "puppetmaster.example.com"
+    puppetmaster.vm.network :private_network, ip: "192.168.250.5"
+    puppetmaster.vm.provision "shell", inline: $setupscript
   end
 end

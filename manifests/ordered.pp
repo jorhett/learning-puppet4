@@ -1,10 +1,11 @@
 package { 'tcpdump':
-  ensure  => present,
+  ensure  => absent,
 }
 
-exec { 'installedmsg': }
+exec { 'installedmsg':
   path        => ['/bin'],
-  command     => 'echo Traceroute has been installed.',
+  command     => 'echo Tcpdump has been removed.',
   refreshonly => true,
   subscribe   => Package['tcpdump'],
+  logoutput   => true,
 }
