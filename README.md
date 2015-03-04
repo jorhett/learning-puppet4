@@ -14,5 +14,5 @@ ISBN: [978-1-4919-0766-5](http://shop.oreilly.com/product/0636920034131.do)
 ## Description
 
 This repository contains a Vagrantfile and sample resources
-used for creationg of a safe testing environment used in the Learning Puppet 4 book.
+used for creation of the testing environment used in the Learning Puppet 4 book.
 
