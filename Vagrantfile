@@ -20,10 +20,10 @@ $setupscript = <<END
   # Provide the URL to the Puppet Labs yum repo on login
   echo "
 
-You should start by installing the Puppet Labs nightly release repo and Puppet 4
-   sudo wget -O /etc/yum.repos.d/puppet-agent-latest.repo \\
-       http://nightlies.puppetlabs.com/puppet-agent-latest/repo_configs/rpm/pl-puppet-agent-latest-el-7-x86_64.repo 
+You should start by enabling the Puppet Labs Puppet Collection 1 release repo
+   sudo yum install http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 
+Then install Puppet 4 and its companion packages
    sudo yum install -y puppet-agent
    
 " > /etc/motd
