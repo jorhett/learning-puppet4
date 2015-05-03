@@ -7,16 +7,22 @@ Vagrant.require_version ">= 1.5.2"
 
 # Copy files into place
 $setupscript = <<END
-  # Install puppet.conf in user directory to quiet deprecation warnings
+  # Setup directory for Puppet apply as user
   mkdir -p /home/vagrant/.puppet
   cp /vagrant/etc-puppet/puppet.conf /home/vagrant/.puppet/
   chown -R vagrant:vagrant /home/vagrant/.puppet
+
+  # Enable print of MoTD
+  sed -i -e 's/PrintMotd no/PrintMotd yes/' /etc/ssh/sshd_config
+  systemctl restart sshd
+
   # Install example hiera settings in global directory
   mkdir -p /etc/puppetlabs/puppet
   cp -r /vagrant/etc-puppet/* /etc/puppetlabs/puppet/
   mkdir -p /etc/puppetlabs/code
   cp -r /vagrant/puppet-code/* /etc/puppetlabs/code/
   chown -R vagrant:vagrant /etc/puppetlabs
+
   # Provide the URL to the Puppet Labs yum repo on login
   echo "
 
