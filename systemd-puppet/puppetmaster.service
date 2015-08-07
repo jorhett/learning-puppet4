@@ -1,0 +1,14 @@
+[Unit]
+Description=Puppet master
+Wants=basic.target
+After=basic.target network.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/puppetmaster
+EnvironmentFile=-/etc/sysconfig/puppet
+EnvironmentFile=-/etc/default/puppet
+ExecStart=/opt/puppetlabs/puppet/bin/puppet master $PUPPETMASTER_EXTRA_OPTS --no-daemonize
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

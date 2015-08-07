@@ -1,0 +1,2 @@
+# You may specify parameters to the puppet master here
+#PUPPETMASTER_EXTRA_OPTS=--vardir=/var/lib/puppetmaster
