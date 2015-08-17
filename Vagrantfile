@@ -45,11 +45,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
   end
 
-  # Default client
+  # clients
   config.vm.define "client", primary: true do |client|
     client.vm.hostname = "client.example.com"
     client.vm.network :private_network, ip: "192.168.250.10"
     client.vm.provision "shell", inline: $setupscript
+  end
+
+  config.vm.define "webserver", primary: true do |webserver|
+    webserver.vm.hostname = "webserver.example.com"
+    webserver.vm.network :private_network, ip: "192.168.250.20"
+    webserver.vm.provision "shell", inline: $setupscript
   end
 
   # A puppetmaster
