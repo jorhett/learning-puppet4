@@ -20,7 +20,7 @@ $setupscript = <<END
 
   # Install example hiera settings in global directory
   mkdir -p /etc/puppetlabs/puppet
-  cp -r /vagrant/etc-puppet/* /etc/puppetlabs/puppet/
+  cp /vagrant/etc-puppet/puppet.conf /etc/puppetlabs/puppet/
   mkdir -p /etc/puppetlabs/code
   chown -R vagrant:vagrant /etc/puppetlabs
 
