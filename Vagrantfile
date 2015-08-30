@@ -74,4 +74,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ps.memory = 1024
     end
   end
+
+  # Puppet Dashboard
+  config.vm.define "dashboard", autostart: false do |puppetserver|
+    puppetserver.vm.hostname = "dashserver.example.com"
+    puppetserver.vm.network :private_network, ip: "192.168.250.7"
+    puppetserver.vm.provision "shell", inline: $setupscript
+    puppetserver.vm.provider :virtualbox do |ps|
+      ps.memory = 1024
+    end
+  end
 end

@@ -2,9 +2,10 @@
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 # Puppet servers -- move the Puppet alias to the one you are testing
-192.168.250.5  puppetmaster.example.com puppmaster
-192.168.250.6  puppetserver.example.com puppetserver puppet.example.com
+192.168.250.5  puppetmaster.example.com
+192.168.250.6  puppet.example.com puppetserver.example.com
+192.168.250.7  dashserver.example.com dashboard.example.com
 
 # Clients
-192.168.250.10 client.example.com client
-192.168.250.20 webserver.example.com webserver
+192.168.250.10 client.example.com
+192.168.250.20 webserver.example.com
