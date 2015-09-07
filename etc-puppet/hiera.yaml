@@ -1,0 +1,9 @@
+---
+:backends:
+  - yaml
+:hierarchy:
+  - "hostname/%{facts.hostname}"
+  - "os/%{facts.osfamily}"
+  - common
+:yaml:
+  :datadir: /etc/puppetlabs/code/hieradata

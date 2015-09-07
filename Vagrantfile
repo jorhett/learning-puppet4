@@ -14,9 +14,9 @@ $setupscript = <<END
   cp /vagrant/etc-puppet/hosts /etc/hosts
 
   # Install puppet.conf in user directory to quiet deprecation warnings
-  #mkdir -p /home/vagrant/.puppetlabs/etc/puppet
-  #cp /vagrant/etc-puppet/puppet.conf /home/vagrant/.puppetlabs/etc/puppet
-  #chown -R vagrant:vagrant /home/vagrant/.puppetlabs
+  mkdir -p /home/vagrant/.puppetlabs/etc/puppet
+  cp /vagrant/etc-puppet/personal-puppet.conf /home/vagrant/.puppetlabs/etc/puppet/puppet.conf
+  chown -R vagrant:vagrant /home/vagrant/.puppetlabs
 
   # Install example hiera settings in global directory
   mkdir -p /etc/puppetlabs/puppet
