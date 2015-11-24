@@ -13,7 +13,10 @@ $setupscript = <<END
   # Install etc/hosts for convenience
   cp /vagrant/etc-puppet/hosts /etc/hosts
 
-  # Install puppet.conf in user directory to quiet deprecation warnings
+  # Add /opt/puppetlabs to the sudo secure_path
+  sed -i -e 's/\(secure_path = .*\)$/\1:\/opt\/puppetlabs\/bin/' /etc/sudoers
+
+  # Install puppet.conf in user directory to share code directory
   mkdir -p /home/vagrant/.puppetlabs/etc/puppet
   cp /vagrant/etc-puppet/personal-puppet.conf /home/vagrant/.puppetlabs/etc/puppet/puppet.conf
   chown -R vagrant:vagrant /home/vagrant/.puppetlabs
