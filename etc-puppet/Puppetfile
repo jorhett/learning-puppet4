@@ -1,0 +1,14 @@
+forge "http://forge.puppetlabs.com"
+
+# Puppet Forge modules
+mod "puppetlabs/strings", :latest   # update to latest version every time
+mod "puppetlabs/inifile", "1.4.1"   # get a specific version
+mod "puppetlabs/stdlib"             # get latest, don't update thereafter
+mod "jorhett/mcollective", :latest  # update to latest version every time
+
+# track master from GitHub
+mod 'puppet-systemstd',
+   :git => 'git://github.com/jorhett/puppet-systemstd.git'
+
+# local module we shouldn't remove
+mod 'puppet', :local => true

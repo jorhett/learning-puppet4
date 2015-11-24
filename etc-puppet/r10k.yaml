@@ -1,0 +1,13 @@
+# The location to use for storing cached Git repos
+cachedir: '/var/cache/r10k'
+
+# A list of git repositories to create
+sources:
+  # Clone the git repository and instantiate an environment per branch
+  example:
+    basedir: '/etc/puppetlabs/code/environments'
+    remote: 'git@github.com:puppetlabs/control-repo'
+    prefix: false
+
+# An optional command to be run after deployment
+#postrun: ['/path/to/command','--opt1','arg1','arg2']
