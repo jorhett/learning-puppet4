@@ -14,7 +14,7 @@ $setupscript = <<END
   cp /vagrant/etc-puppet/hosts /etc/hosts
 
   # Add /opt/puppetlabs to the sudo secure_path
-  sed -i -e 's/\(secure_path = .*\)$/\1:\/opt\/puppetlabs\/bin/' /etc/sudoers
+  sed -i -e 's#\(secure_path = .*\)$#\1:/opt/puppetlabs/bin#' /etc/sudoers
 
   # Install puppet.conf in user directory to share code directory
   mkdir -p /home/vagrant/.puppetlabs/etc/puppet
