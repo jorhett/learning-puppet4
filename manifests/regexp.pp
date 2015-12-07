@@ -1,6 +1,13 @@
+if /foo/ =~ Regexp {
+  notice( '/foo/ is a regexp' )
+}
+if 'foo' =~ Regexp {
+  notice( "'foo' is a regexp" )
+}
+
 $input = /food/
 if $input =~ Regexp {
-  notice( 'is a regexp' )
+  notice( "${input} is a regexp" )
 }
 if $input =~ Regexp[/fod/] {
   notice( 'matches /fod/' )
