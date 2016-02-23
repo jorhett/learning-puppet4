@@ -42,7 +42,7 @@ Then install Puppet 4 and its companion packages
 END
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "puppetlabs/centos-7.0-64-nocm"
+  config.vm.box = "puppetlabs/centos-7.2-64-nocm"
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
@@ -55,9 +55,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     client.vm.provision "shell", inline: $setupscript
   end
 
-  config.vm.define "webserver", primary: true do |webserver|
-    webserver.vm.hostname = "webserver.example.com"
-    webserver.vm.network :private_network, ip: "192.168.250.20"
+  config.vm.define "web1", primary: true do |webserver|
+    webserver.vm.hostname = "web1.example.com"
+    webserver.vm.network :private_network, ip: "192.168.250.21"
+    webserver.vm.provision "shell", inline: $setupscript
+  end
+  config.vm.define "web2", primary: true do |webserver|
+    webserver.vm.hostname = "web2.example.com"
+    webserver.vm.network :private_network, ip: "192.168.250.22"
+    webserver.vm.provision "shell", inline: $setupscript
+  end
+  config.vm.define "web3", primary: true do |webserver|
+    webserver.vm.hostname = "web3.example.com"
+    webserver.vm.network :private_network, ip: "192.168.250.23"
     webserver.vm.provision "shell", inline: $setupscript
   end
 
