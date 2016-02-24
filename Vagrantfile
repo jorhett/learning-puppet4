@@ -80,7 +80,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Puppet Server
   config.vm.define "puppetserver", autostart: false do |puppetserver|
-    puppetserver.vm.hostname = "puppet-server.example.com"
+    puppetserver.vm.hostname = "puppetserver.example.com"
     puppetserver.vm.network :private_network, ip: "192.168.250.6"
     puppetserver.vm.provision "shell", inline: $setupscript
     puppetserver.vm.provider :virtualbox do |ps|
