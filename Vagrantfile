@@ -3,7 +3,7 @@
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
-Vagrant.require_version ">= 1.5.2"
+Vagrant.require_version ">= 1.8.1"
 
 # Copy files into place
 $setupscript = <<END
@@ -44,6 +44,7 @@ END
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "puppetlabs/centos-7.2-64-nocm"
   config.vm.provider :virtualbox do |vb|
+	vb.linked_clone = true
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
   end
