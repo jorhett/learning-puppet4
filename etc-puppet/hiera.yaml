@@ -1,9 +1,15 @@
 ---
-:backends:
-  - yaml
-:hierarchy:
-  - "hostname/%{facts.hostname}"
-  - "os/%{facts.osfamily}"
-  - common
-:yaml:
-  :datadir: /etc/puppetlabs/code/hieradata
+version: 5
+defaults:        # for any hierarchy level without these keys
+  datadir: data  # directory name inside the environment
+  data_hash: yaml_data
+
+hierarchy:
+  - name: "Hostname"
+    path: "hostname/%{trusted.hostname}.yaml"
+
+  - name: "OS-specific values"
+    path: "os/%{facts.osfamily}.yaml"
+
+  - name: "common"
+    path: "common.yaml"
